@@ -1,0 +1,28 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: producer
+  cloud:
+    zookeeper:
+      connect-string: 123.206.64.103:2181
+      discovery:
+        enabled: true
+        root: /producer
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+consumer:
+  config:
+    test: kafka999
